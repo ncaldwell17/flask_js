@@ -1,0 +1,37 @@
+<html>
+
+<body>
+<h1>This is a simple Hello World integration of Flask and JS</h1>
+</body>
+    
+<script>
+    function helloWorld() {
+        let origin = 'http://localhost:5000/';
+        let call = '?text=';
+        let info = 'Raf it worked!'
+        fetch(origin+call+info, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(result => result.json())
+            .then(item => {
+                console.log(item);
+                use(item);
+            })
+            .catch(e => {
+                console.log(e);
+                return e;
+            })
+    }
+
+    function use(json) {
+        console.log(json);
+        let obj = json;
+        console.log(obj['data']);
+    }
+</script>
+    
+</html>
